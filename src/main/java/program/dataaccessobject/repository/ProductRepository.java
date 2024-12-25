@@ -1,6 +1,6 @@
-package program.dataaccessobject;
+package program.dataaccessobject.repository;
 
-import org.springframework.beans.factory.annotation.Autowired;import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +18,7 @@ public class ProductRepository {
     private final NamedParameterJdbcTemplate jdbcTemplate;
     private final String query;
 
-    @Autowired
+
     public ProductRepository(NamedParameterJdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
         this.query = read();
@@ -27,7 +27,7 @@ public class ProductRepository {
     public String getProductName(String name) {
         Map<String, Object> params = new HashMap<>();
         params.put("name", name);
-        return jdbcTemplate.queryForObject(query, params, String.class);
+        return jdbcTemplate.queryForList(query, params, String.class).toString();
     }
 
     private static String read() {
@@ -39,3 +39,4 @@ public class ProductRepository {
         }
     }
 }
+

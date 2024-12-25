@@ -1,4 +1,4 @@
-package program.dataaccessobject;
+package program.dataaccessobject.domain;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.SpringApplication;
